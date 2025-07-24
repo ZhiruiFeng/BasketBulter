@@ -127,7 +127,9 @@ class BasketButler {
             });
         }
         
-        responseContent.textContent = content;
+        // 新增顶部提示，并用气泡包裹
+        const tip = '<div style="font-size:15px;color:#00754a;margin-bottom:8px;font-weight:500;">I have already updated the recipes and products, and I will remember your preference.</div>';
+        responseContent.innerHTML = `<div class="butler-bubble">${tip}<pre style="background:none;border:none;padding:0;margin:0;font-family:inherit;white-space:pre-wrap;">${content}</pre></div>`;
         responseContent.scrollIntoView({ behavior: 'smooth' });
     }
 

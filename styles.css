@@ -911,3 +911,16 @@ main {
         font-size: 16px;
     }
 }
+
+.butler-bubble {
+    background: linear-gradient(135deg, #e6f4ea 0%, #b7e4c7 100%);
+    border-radius: 20px;
+    padding: 18px 22px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(46,139,87,0.10);
+    font-size: 16px;
+    color: #1a1a1a;
+    border: none;
+    position: relative;
+    word-break: break-word;
+}
