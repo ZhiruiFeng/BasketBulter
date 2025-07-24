@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BasketButler - AI Meal Planning Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+</body>
+    </html>
+    <div class="container">
+        <!-- Landing Page -->
+        <div id="landing-page" class="page">
+            <header class="landing-header">
+                <div class="header-content">
+                    <h1>BasketButler</h1>
+                    <p>Your AI-powered meal planning and grocery companion</p>
+                </div>
+                
+                <div class="landing-options">
+                    <button class="landing-btn" onclick="router.navigate('/new-user')">
+                        <div class="btn-icon">👋</div>
+                        <div class="btn-content">
+                            <h3>New User</h3>
+                            <p>Set up your preferences and get started</p>
+                        </div>
+                        <div class="btn-arrow">→</div>
+                    </button>
+                    
+                    <button class="landing-btn" onclick="router.navigate('/returning-user')">
+                        <div class="btn-icon">🔄</div>
+                        <div class="btn-content">
+                            <h3>Returning User</h3>
+                            <p>Continue with your meal planning</p>
+                        </div>
+                        <div class="btn-arrow">→</div>
+                    </button>
+                    
+                    <button class="landing-btn" onclick="router.navigate('/paste-link')">
+                        <div class="btn-icon">🔗</div>
+                        <div class="btn-content">
+                            <h3>Paste Link</h3>
+                            <p>Share a recipe or food link</p>
+                        </div>
+                        <div class="btn-arrow">→</div>
+                    </button>
+                </div>
+            </header>
+            
+            <main>
+                <!-- Empty main section for landing page -->
+            </main>
+        </div>
+
+        <!-- New User Page -->
+        <div id="new-user-page" class="page" style="display: none;">
+            <div class="card">
+                <button class="modern-back-btn" onclick="router.navigate('/')">←</button>
+                <header>
+                    <h1> Basket Butler is here for you!</h1>
+                    <p> We take care of your healthy meal planning and grocery shopping. </p>
+                </header>
+                <main>
+                    <div class="recommendation-bar">
+                        <div class="recipe-scroll-title">Recipes Made for You</div>
+                        <div class="recipes-scroll" id="recipes-scroll-new-user"></div>
+                        <div class="reason-bar" id="reason-bar-new-user"></div>
+                        <div class="grocery-scroll-title">Related Grocery for Shopping</div>
+                        <div class="grocery-scroll" id="grocery-scroll-new-user"></div>
+                    </div>
+                    <div class="input-section-title">Talk with your Butler directly</div>
+                    <div class="input-section">
+                        <div class="toggle-switch-container">
+                            <span class="toggle-label-text">Text</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="new-user-toggle" onchange="switchInputMode(this, 'new-user')">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="toggle-label-link">Link</span>
+                        </div>
+                        <div class="input-container">
+                            <textarea 
+                                id="new-user-input" 
+                                placeholder="Tell me about your dietary preferences, allergies, favorite cuisines, or any specific needs..."
+                            ></textarea>
+                            <button id="new-user-send" class="send-button">Submit</button>
+                        </div>
+                    </div>
+                    <div class="response-section" id="new-user-response" style="display: none;">
+                        <h3>Your Personalized Plan:</h3>
+                        <div id="new-user-content"></div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Returning User Page -->
+        <div id="returning-user-page" class="page" style="display: none;">
+            <div class="card">
+                <button class="modern-back-btn" onclick="router.navigate('/')">←</button>
+                <header>
+                    <h1>Welcome Back!</h1>
+                    <p>What would you like to plan today?</p>
+                </header>
+                <main>
+                    <div class="recommendation-bar">
+                        <div class="recipe-scroll-title">Recipes Made for You</div>
+                        <div class="recipes-scroll" id="recipes-scroll-returning-user"></div>
+                        <div class="reason-bar" id="reason-bar-returning-user"></div>
+                        <div class="grocery-scroll-title">Related Grocery for Shopping</div>
+                        <div class="grocery-scroll" id="grocery-scroll-returning-user"></div>
+                    </div>
+                    <div class="input-section">
+                        <div class="toggle-switch-container">
+                            <span class="toggle-label-text">Text</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="returning-user-toggle" onchange="switchInputMode(this, 'returning-user')">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="toggle-label-link">Link</span>
+                        </div>
+                        <div class="input-container">
+                            <textarea 
+                                id="returning-user-input" 
+                                placeholder="What's on your mind? Need meal ideas, want to update your grocery list, or plan for a special occasion?"
+                            ></textarea>
+                            <button id="returning-user-send" class="send-button">Submit</button>
+                        </div>
+                    </div>
+                    <div class="response-section" id="returning-user-response" style="display: none;">
+                        <h3>BasketButler Response:</h3>
+                        <div id="returning-user-content"></div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Paste Link Page -->
+        <div id="paste-link-page" class="page" style="display: none;">
+            <div class="card">
+                <button class="modern-back-btn" onclick="router.navigate('/')">←</button>
+                <header>
+                    <h1>Share a Link</h1>
+                    <p>Paste a recipe or food-related link</p>
+                </header>
+                <main>
+                    <div class="recommendation-bar">
+                        <div class="recipe-scroll-title">Recipes made for you</div>
+                        <div class="recipes-scroll" id="recipes-scroll-paste-link"></div>
+                        <div class="reason-bar" id="reason-bar-paste-link"></div>
+                        <div class="grocery-scroll-title">Related Grocery for Shopping</div>
+                        <div class="grocery-scroll" id="grocery-scroll-paste-link"></div>
+                    </div>
+                    <div class="input-section">
+                        <div class="toggle-switch-container">
+                            <span class="toggle-label-text">Text</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="paste-link-toggle" onchange="switchInputMode(this, 'paste-link')">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="toggle-label-link">Link</span>
+                        </div>
+                        <div class="input-container">
+                            <textarea 
+                                id="paste-link-input" 
+                                placeholder="Paste a recipe URL, food blog link, social media post, or any food-related link here..."
+                            ></textarea>
+                            <button id="paste-link-send" class="send-button">Submit</button>
+                        </div>
+                    </div>
+                    <div class="response-section" id="paste-link-response" style="display: none;">
+                        <h3>Link Analysis:</h3>
+                        <div id="paste-link-content"></div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    
+    <script src="router.js"></script>
+    <script src="script.js"></script>
+</body>
+<div id="butler-modal" class="butler-modal" style="display:none">
+  <div class="butler-modal-content">
+    <button class="butler-modal-close" onclick="closeButlerModal()">×</button>
+    <div id="butler-modal-body"></div>
+  </div>
+</div>
+</html>
